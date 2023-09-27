@@ -5,3 +5,57 @@
     color: white;
     font-size: 30px;
   }
+
+/* Style the navbar to be horizontal */
+.navbar {
+  background-color: #333; /* Background color for the navbar */
+}
+
+/* Style the links in the navbar */
+.navbar a.nav-link {
+  color: #fff; /* Text color for the links */
+  padding: 10px 20px; /* Adjust the padding to your liking */
+}
+
+/* Style the links on hover */
+.navbar a.nav-link:hover {
+  background-color: #555; /* Background color on hover */
+  color: #fff; /* Text color on hover */
+}
+
+/* Center the text vertically in the navbar */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Optional: Adjust the spacing between navbar items */
+.navbar-nav .nav-item {
+  margin-right: 10px; /* Adjust the margin to your liking */
+}
+
+/* Optional: Style the navbar brand */
+.navbar-brand {
+  font-size: 24px; /* Adjust the font size to your liking */
+  font-weight: bold; /* Adjust the font weight to your liking */
+  padding-right: 20px; /* Adjust the padding to your liking */
+}
+
+/* Optional: Style the toggle button icon */
+.navbar-toggler-icon {
+  background-color: #fff; /* Color of the toggle button icon */
+}
+
+/* Optional: Style the toggle button on hover */
+.navbar-toggler:hover .navbar-toggler-icon {
+  background-color: #ccc; /* Background color on hover */
+}
+/* Style the buttons */
+.navbar button.btn {
+  margin-left: 10px; /* Adjust the margin to create spacing between buttons */
+}
+
+/* Optional: Style the buttons on hover */
+.navbar button.btn:hover {
+  opacity: 0.8; /* Adjust the opacity on hover if desired */
+}
