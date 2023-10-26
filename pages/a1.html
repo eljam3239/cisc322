@@ -20,6 +20,201 @@
 <body>
     <h1>Assignment 1</h1>
     <a href="../index.html"class="btn">Home</a>
-    <h1>Put a1 here</h1>
+    <h3><p>"Stratified Solutions for Seamless Streaming: Team Kodi's Layered Network Odyssey"</p>
+        <p style="text-align: center;">Trevor Withers</p>
+        <p style="text-align: center;">Erin Atacan</p>
+        <p style="text-align: center;">Eli James</p>
+        <p style="text-align: center;">Joanna Bian</p>
+        <p style="text-align: center;">Zhihao (Dallas) Nie</p>
+        <p style="text-align: center;">Chengqi Li</p>
+        <h2>Abstract</h2>
+        <p>The Kodi Entertainment Hub, a product of the XBMC Consortium(Kodi Wiki), is a collection of innovative software design made by a global effort. Central to this report is an exploration of its layered style of architecture, a model, ease of updates, and efficient interactions with external environments. Key stakeholders and their roles within the developmental framework are outlined, offering a roadmap of the software's evolution. Emphasizing its adaptability, the report sheds light on Kodi's expansive features and their seamless functionality across many platforms. Targeted at both managers and developers, the concluding insights highlight the software's evolutionary trajectory, ensuring it remains at the forefront of architectural and functional innovation.</p>
+        <h2>Introduction: Charting the Kodi Expedition&nbsp;</h2>
+        <p>In the ever-evolving industry of digital entertainment, the Kodi Media Player, formerly known as the XBMC Player, emerges as a globally crafted multi-platform entertainment center. Developed under the umbrella of the XBMC Foundation, this open-source marvel is the result of countless hours of collaboration by a diverse community of contributors. In this report, we go through the intricate layers and perspectives that constitute the Kodi Media Player's architectural style.&nbsp;</p>
+        <p>Our voyage began with the simple act of downloading this media player and experiencing its capabilities firsthand. Over the course of several weeks, Team Cache Me Some Waves, representing the dynamic student body at Queen's University, delved headfirst into Kodi architecture. Armed with newfound knowledge and tools gleaned from our Software Architecture course (CISC 322), we explored this software from various angles and discussed its architecture.&nbsp;</p>
+        <p>This webpage serves as our journal, capturing our observations and discoveries as we investigate Kodi's layers and viewpoints. We present our findings and insights, all guided by the central question of whether Kodi possesses a robust architecture that allows for future software evolution.</p>
+        <p>Kodi presents a captivating exterior to users, offering an all-encompassing media center experience. Its intuitive design provides users with a seamless interface for accessing movies, music, and images. With its user-friendly features, Kodi effortlessly integrates into living room environments when connected to a TV, allowing users to control their multimedia experience from the comfort of their couches with remote keyboards and mice.</p>
+        <p>One of Kodi's standout features is its support for a wide range of add-ons, which enable users to stream or download multimedia from external sources, such as Spotify, Grooveshark, series, news channels, and missed broadcasts. With add-ons, users can effortlessly access and enjoy the latest multimedia content, whether online or offline.</p>
+        <p>Originally developed for the XBOX game console as the "XBOX Media Center (XBMC)," Kodi has expanded its horizons to include various platforms, including Windows, OSX, iOS, Android, and Linux. In 2014, it underwent a name change, becoming the "Kodi" Entertainment Center, while retaining its commitment to open-source principles and free access.</p>
+        <p>Behind the scenes, developers collaborated to enhance the Kodi Media Player. Our journey takes us into the depths of Kodi's repository on Github, where we unveil the influential stakeholders, including board members, experienced developers, and maintainers who steer the course of this software.</p>
+        <p>We'll traverse the intricate web of dependencies and interactions through the context view, shedding light on how Kodi interfaces with its environment. The development view reveals Kodi's modular architecture, akin to well-ordered building blocks, supporting its development and maintenance.</p>
+        <p>Our journey continues with the functional view, providing a deeper understanding of how these building blocks operate and interact. While Kodi may appear consistent across various operating systems from the outside, the variability view exposes the nuanced differences in features.</p>
+        <p>Lastly, we gaze into the future through the evolution perspective, where we discuss and evaluate the roadmap to the next version, codenamed 'Isenguard.' This perspective underscores Kodi's commitment to continuous enhancement.</p>
+        <p>As we navigate through Kodi's multifaceted architecture, this report aims to provide a comprehensive understanding of the Kodi Media Player, both from the user's perspective and the developer's realm, unveiling its architectural prowess and potential for evolution.</p>
+        <h2>Architecture</h2>
+        <p>Kodi&rsquo;s architecture is separated into 4 distinct layers. The Client Layer is the system used by the client to access the application. The Presentation layer handles user input and the tools used to manipulate audio and visual elements of the application. The Business layer handles the logic behind how clients interact with the content ( display, network access, playback, etc). Finally the Data layer consists of a database of the media, its metadata and the views available to access it.&nbsp;</p>
+        <p>The Client Layer captures the external device the user is accessing Kodi on.&nbsp;</p>
+        <p>The Presentation Layer consists of subsystems that handle all aspects of the user&rsquo;s interaction with Kodi&rsquo;s interface. First, EventServer API is used to capture user input from external devices. Then the Windows Manager Module uses libraries provided by the external devices to provide visual display appropriate to the device. GUI Elements is a subsystem that handles all design elements of the Kodi interface. These elements determine how the user navigates the website. The translation module uses WebLate, a web-based continuous translation tool. The Audio Manager module uses Windows Audio Session API to manage output specifics such as the device, mode, volume and delay.&nbsp;&nbsp;&nbsp;</p>
+        <p>Within the Business Layer, the Python Module handles user or third party add-ons. These are extensions that can be run within Kodi. A Web Server module allows for several users to access the same content from the same network. A Player core module handles interaction between the media files (from the Data layer) and the system that handles its playback.</p>
+        <p>The Data Layer has a Sources Elements database that holds all media sources within Kodi. Users are allowed to add or access different content. The Views Elements database offers different organizational structures for the media to be viewed as (by genre, title, etc). The Metadata Elements consists of data related to the content such as title, genre, language etc.</p>
+        <p><span style="color: #202122;">The performance critical parts of the system are CPU performance, graphics processing ability, I/O and memory management. Sufficient CPU performance with memory management is required by codec, audio renderer and audio player, so that the system can load, process and play the data stream in real time. Graphics processing unit is necessary for the video renderer to work.</span></p>
+        <p>Kodi allows for changes in its system by its own developers, third-party developer and users themselves. Firstly, as a guideline, Kodi is built with low-coupling between the system and other operating systems or third party libraries. This prevents any damage to Kodi&rsquo;s system as a result of bugs in external systems. Also, Kodi has a modular design where subsystems are localized, isolated pieces of code. This means that by disabling a non-essential module or library, Kodi should still compile and run. This allows future changes to be made without risk of damaging existing features of the system. Another aspect of Kodi that allows for changes&nbsp; in its system is its AddOns. These are extensions run within Kodi written by third-party developers or users themselves. These are either private repository add ons for the users only, or official repository add ons where Kodi reviews and then publishes addons it deems fit within the guidelines of its system. Finally there are System add ons that can only be installed by Kodi. These are typically written in Python so Kodi provides a built-in python interpreter for users to use. This provides a clean interface with the Kodi dashboard. Finally, Kodi&rsquo;s development process allows only stable versions of the system to be released. Development builds are unstable, new versions made by developers to test new features. Users are able to request new features through forums and submit bug reports as well. Kodi is a system well prepared for changes made by users, other applications and the developers themselves.&nbsp;</p>
+        <p>The user interacts with the Kodi through its user interface. The Kodi will start to play the media file once selected from its database or supplied by the user, at the same time, the player core retrieves data from the database and decodes synchronously as the decoded data is rendered and played, this allows the user to play the music/video immediately, even if the further data is not processed yet. While the media is being played, users can interact with the playback through the GUI of Kodi, which includes actions like volume control, pause, resume, and go back etc.. These controls will be passed to the player core which handles the playback and players.&nbsp;</p>
+        <p>Kodi exhibits a layered architecture style whereby distinct, modular layers interact with at most 1 layer above or below them. This poses a few benefits. Firstly, as the community develops new plugins, we can test components independently of one another to assess how it interacts with the system. Furthermore, we can support modularity as a design philosophy with a layered system because we can create changes to a layer while affecting at most the layer that acts as a client to it and the layer that it is a client of. We can group associated processes in layers which then interact with each other hierarchically, which can encourage thoughtful design of streamlined processes by easing abstraction.&nbsp;</p>
+        <p>Elements that are critical to success of architecture:&nbsp;</p>
+        <ul>
+        <li>Abstraction used for handling media in different format, codecs</li>
+        <li>Abstraction of the plugin system for integrating third-party add-ons/extensions&nbsp;</li>
+        <li>The player class that manages media playback, decoding and rendering</li>
+        <li>Algorithm for media decoding, rendering and playback.&nbsp;</li>
+        </ul>
+        <p><strong>Diagram</strong></p>
+        <p><span style="text-decoration: underline;">Listening to music from the local storage:</span></p>
+        <p><span style="text-decoration: underline;">Photo Gallery Viewing:</span></p>
+        <p><strong>External Interfaces</strong></p>
+        <p>Use Cases:</p>
+        <ol>
+        <li>Home Theatre PC (HTPC) Setup</li>
+        </ol>
+        <ul>
+        <li>Turn computer into home theater</li>
+        <li>Install Kodi to manage &amp; play media files on TV using PC</li>
+        </ul>
+        <ol>
+        <li>Streaming online content</li>
+        </ol>
+        <ul>
+        <li>Watch online TV shows, Movies etc</li>
+        <li>Install 3rd party add-ons to stream</li>
+        </ul>
+        <ol>
+        <li>Listen to Music</li>
+        </ol>
+        <ul>
+        <li>User has collection of music stored locally</li>
+        <li>Kodi can organize, categorize and play songs based on artist/album/genre</li>
+        </ul>
+        <ol>
+        <li>Photo Gallery Viewer</li>
+        <ol>
+        <li>View digital photo collections</li>
+        <li>Image viewer feature navigate and showcase photos</li>
+        </ol>
+        <li>Podcast Manager</li>
+        <ol>
+        <li>Can subscribe, download and play various podcast channels</li>
+        </ol>
+        <li>Remote Control Usage</li>
+        <ol>
+        <li>Use remove apps or third-party apps on smartphone to navigate and control Kodi media centre</li>
+        </ol>
+        <li>Skin and customization</li>
+        <ol>
+        <li>Personalize the kodi setup</li>
+        </ol>
+        <li>Gaming Hub</li>
+        <ol>
+        <li>Set up kodi to play retro games using emulators</li>
+        </ol>
+        <li>External Device Integration</li>
+        <ol>
+        <li>User can play media from external hard drive or USB</li>
+        </ol>
+        </ol>
+        <h2>Data Dictionary:</h2>
+        <h2>The data dictionary is as follows:</h2>
+        <div>
+        <table>
+        <tbody>
+        <tr>
+        <td><strong>Attribute Name</strong></td>
+        <td><strong>Format</strong></td>
+        <td><strong>Store</strong></td>
+        <td><strong>examples</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Windows manager Module</strong></td>
+        <td><strong>Libraries from OS</strong></td>
+        <td><strong>Presentation layer</strong></td>
+        <td><strong>Handle window management</strong></td>
+        </tr>
+        <tr>
+        <td><strong>GUI Elements</strong></td>
+        <td><strong>GUI setting files</strong></td>
+        <td><strong>Presentation layer</strong></td>
+        <td><strong>Button size</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Translation Module</strong></td>
+        <td><strong>Language packs</strong></td>
+        <td><strong>Presentation layer</strong></td>
+        <td><strong>English</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Audio manager Module</strong></td>
+        <td><strong>Audio setting files</strong></td>
+        <td><strong>Presentation layer</strong></td>
+        <td><strong>Audio output selection</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Fonts module</strong></td>
+        <td><strong>Font files</strong></td>
+        <td><strong>Presentation layer</strong></td>
+        <td><strong>Titles, menus</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Python module</strong></td>
+        <td><strong>Python libraries</strong></td>
+        <td><strong>Business Layer</strong></td>
+        <td><strong>Manage custom adds-on</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Web server module</strong></td>
+        <td><strong>Built in web server</strong></td>
+        <td><strong>Business Layer</strong></td>
+        <td><strong>Remote control through web browser</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Player Core Module</strong></td>
+        <td><strong>Player files</strong></td>
+        <td><strong>Business Layer</strong></td>
+        <td><strong>Control and play multimedia content</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Source elements</strong></td>
+        <td><strong>HDD, CD,DVD</strong><strong>Network protocols,</strong><strong>Streaming Device</strong></td>
+        <td><strong>Data Layer</strong></td>
+        <td><strong>Manage media sources, add or access different content sources</strong></td>
+        </tr>
+        <tr>
+        <td><strong>View elements</strong></td>
+        <td><strong>Viewer files</strong></td>
+        <td><strong>Data Layer</strong></td>
+        <td><strong>File List or more organized option</strong></td>
+        </tr>
+        <tr>
+        <td><strong>Metadata elements</strong></td>
+        <td><strong>Tag readers,</strong> <strong>Web scrapers</strong></td>
+        <td><strong>Data Layer</strong></td>
+        <td><strong>Obtain additional information about multimedia content</strong></td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        <h2>Naming Conventions:</h2>
+        <ol>
+        <li>
+        <h2>For movie and video, there are two types of folder for organizing movies: Movie folders or flat folder. Correct naming is &ldquo;Movie Name (Year)&rdquo; and matches the name shown at the scraper site.</h2>
+        </li>
+        <li>
+        <h2>For TV shows, the file name must be in the form of &ldquo;TV Show Name (Year)&rdquo;, for country of origin, the (Year) is replaced with the country code, for example, Hells Kitchen (UK). The name of the show and the number of episodes must be correct.</h2>
+        </li>
+        <li>
+        <h2>For music videos, the file must be named as Artist - Title.mkv, and two spaces must be added to either side of the hyphen.</h2>
+        </li>
+        </ol>
+        <p><strong>Lessons Learned</strong>:</p>
+        <ol>
+        <li>Developers are also users, ensuring that updates and additions are both relevant and effective.</li>
+        <li>Kodi is open source and the main community for developing works voluntarily. A limited group of developers earn their rights to deny or approve a contribution and pull requests by their active participation in a certain period. This lowers the cost of development and ensures the quality of the project.</li>
+        <li>The Kodi architecture exemplifies how design decisions pose trade-offs between non-functional requirements. For example, allowing community driven development of plugins allows for an increased amount of use cases that Kodi can perform, but makes documenting the whole breadth of the Kodi project more difficult. Creating a thorough, top level overview of the complete project architecture becomes impossible as the number of user-created plugins increases.</li>
+        <li>Building blocks (independent Modular architecture) for add-ons enable Kodi to have good scalability and maintainability. When one module fails, the whole system is still usable.</li>
+        </ol>
+        <h2>Conclusions:</h2>
+        <p>The Kodi media player exhibits an innovative software design and architecture which offers an all-encompassing media center experience. Kodi integrates into a wide variety of environments and supports a range of add-ons built by the community. Kodi stands as an exemplar as an open-source and free access piece of software built for and by its community. Its modular, layered architecture ensures a scalable, and robust system which can be built upon thanks to its plug-ins which are programmed by the open-source community. The wide selection of plug-ins, along with the streamlined manner in which they can be built and integrated into the codebase allow the broadening of the app&rsquo;s use cases to encompass all audio, video and emulation needs. Built with low-coupling to external systems, Kodi is able to add, upgrade, enable and disable modules without breaking the app, ensuring seamless expansion of the app its community grows. With modularity in mind, Kodi&rsquo;s developers and contributors have ensured its continual expansion and reliability as time goes on, making it forefront exhibit of community driven open-source development.</p>
+        <h2>References:</h2>
+        <p><em>Architecture</em>. Architecture - Official Kodi Wiki. (2023, July 10). <a href="https://kodi.wiki/view/Architecture" target="_blank" rel="noopener">https://kodi.wiki/view/Architecture</a> [1]</p>
+        <p>Dreef, K., van der Reek, M., Schaper, K., &amp; Steinfort, M. (2015, April 23). <em>Architecting software to keep the lazy ones on the couch</em>. Kodi. <a href="https://delftswa.github.io/chapters/kodi/" target="_blank" rel="noopener">https://delftswa.github.io/chapters/kodi/</a> [2]</p>
+        <p><em>Kodi (software). </em>Wikipedia. <a href="https://en.wikipedia.org/wiki/Kodi_(software)#Architecture" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Kodi_(software)#Architecture</a> [3]</p></h3>
 </body>
 </html>
