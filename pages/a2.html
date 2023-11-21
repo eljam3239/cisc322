@@ -14,11 +14,46 @@
             text-align: center;
             border-radius: 5px;
             text-decoration: none;
+            font-family: sans-serif;
+        }
+        .emb {
+            width: 85vw;
+            height: 85vh;
+        }
+        h2, h1, p {
+            font-family: sans-serif;
+        }
+        iframe {
+            width: 85vw;
+            height: 0;
         }
     </style>
 </head>
 <body>
     <h1>Assignment 2</h1>
     <a href="../index.html" class="btn">Home</a>
+    
+    <h2>Video Presentation</h2>
+    <iframe id="ifr"" src="https://www.youtube.com/embed/jpWajg-rtBk?si=InUTgb1C5ztb8LmF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+    <script>
+        window.addEventListener('resize', updateIframeSize);
+
+        function updateIframeSize() {
+            var iframe = document.getElementById('ifr');
+            var width = iframe.offsetWidth; 
+            var height = (width * 0.563); 
+            iframe.style.height = height + 'px'; 
+        }
+
+        updateIframeSize();
+    </script>
+    <p>Download the presentation <a href="../downloads/A2_Pres.pptx" download>here</a></p>
+    
+    <h2>Report</h2>
+    <!-- <iframe id="A2PDF" src="../downloads/A2 Deliverable.pdf" frameborder="0"></iframe> -->
+    <object class="emb" data="../downloads/A2 Deliverable.pdf" type="application/pdf">
+        <p>Failed to display PDF file. Open with edge or download instead.</p>
+    </object>
+    <p>Download the report <a href="../downloads/A2 Deliverable.pdf" download>here</a></p>
 </body>
 </html>
