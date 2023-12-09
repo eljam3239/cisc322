@@ -15,10 +15,35 @@
             border-radius: 5px;
             text-decoration: none;
         }
+        iframe {
+            width: 85vw;
+        }
     </style>
 </head>
 <body>
     <h1>Assignment 3</h1>
     <a href="../index.html"class = "btn">Home</a>
+
+    <h2>Video Presentation</h2>
+
+    <iframe id="ifr" src="https://www.youtube.com/embed/yik9fcB30-Q?si=vwF5IgP9fZrD_Ew5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <p>Download the presentation <a href="../downloads/A3_Pres_Final.pptx" download>here</a></p>
+    
+    <script>    
+    window.addEventListener('resize', updateIframeSize);
+    function updateIframeSize() {
+        var iframe = document.getElementById('ifr');
+        var width = iframe.offsetWidth; 
+        var height = (width * 0.563); 
+        iframe.style.height = height + 'px'; 
+    }
+    updateIframeSize(); 
+    </script>
+
+    <h2>Report</h2>
+    <object class="emb" data="../downloads/A3 Architectural Enhancement.pdf" type="application/pdf">
+        <p>Failed to display PDF file. Open with edge or download instead.</p>
+    </object>
+    <p>Download the report <a href="../downloads/A3 Architectural Enhancement.pdf" download>here</a></p>
 </body>
 </html>
